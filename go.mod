@@ -1,6 +1,6 @@
 module go-event-api
 
-go 1.21.6
+go 1.18.10
 
 require (
 	github.com/gorilla/mux v1.8.1

@@ -8,9 +8,9 @@ build:
       - make build
     post-build:
       - make postbuild
-    env:
-      - name: PORT
-        value: "8080"
+  env:
+    - name: PORT
+      value: "8080"
 run:
   runtime-version: 1.18.10
   command: ./main
