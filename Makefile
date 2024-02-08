@@ -1,7 +1,7 @@
 run:
 	go run main.go
 build:
-	go build main.go
+	go build -o bin/main main.go 
 
 prebuild:
 	echo "Running prebuild..."
@@ -14,3 +14,5 @@ postbuild:
 	echo "Running prebuild..."
 	go mod edit -go=1.21.6
 	echo "Ran go mod edit..."
+
+ci: prebuild build postbuild
