@@ -1,18 +1,11 @@
 run:
-	go run main.go
+	go run ./src/main.go
 build:
-	go build -o bin/main main.go 
+	go build -o main ./src
 
 prebuild:
-	echo "Running prebuild..."
-	go mod edit -go=1.18.10
-	echo "Ran go mod edit..."
+	rm -rf go.mod go.sum
+	go mod init go-event-api
 	go mod tidy
-	echo "Ran go mod tidy..."
 
-postbuild:
-	echo "Running prebuild..."
-	go mod edit -go=1.21.6
-	echo "Ran go mod edit..."
-
-ci: prebuild build postbuild
+ci: prebuild build
