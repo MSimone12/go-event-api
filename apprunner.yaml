@@ -3,9 +3,17 @@ runtime: go1
 build:
   commands:
     pre-build:
-      - go mod tidy
-      - go mod download
+      - make prebuild
     build:
-      - go build main.go
+      - make build
+    post-build:
+      - make postbuild
+    env:
+      - name: PORT
+        value: "8080"
 run:
+  runtime-version: 1.18.10
   command: ./main
+  network:
+    port: 8080
+    env: PORT
