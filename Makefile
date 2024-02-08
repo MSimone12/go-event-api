@@ -1,7 +1,7 @@
 run:
 	go run ./src/main.go
 build:
-	go build -o main ./src
+	GOOS=linux GOARCH=amd64 go build -o main ./src
 
 prebuild:
 	rm -rf go.mod go.sum
