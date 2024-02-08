@@ -3,7 +3,7 @@ runtime: go1
 build:
   commands:
     build:
-      - echo "built app"
+      - go help build
   env:
     - name: PORT
       value: "8080"
