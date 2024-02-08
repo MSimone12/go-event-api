@@ -1,11 +1,9 @@
-version: 1.0
+version: 1.1
 runtime: go1
 build:
   commands:
-    pre-build:
-      - make prebuild
     build:
-      - make build
+      - make ci
   env:
     - name: PORT
       value: "8080"
