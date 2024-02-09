@@ -11,5 +11,11 @@ import (
 func main() {
 	router := router.GetRouter()
 
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", os.Getenv("PORT")), router))
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", port), router))
 }

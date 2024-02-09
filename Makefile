@@ -1,11 +1,9 @@
 run:
 	go run ./src/main.go
-build:
-	GOOS=linux GOARCH=amd64 go build -o main ./src
 
-prebuild:
-	rm -rf go.mod go.sum
-	go mod init go-event-api
-	go mod tidy
+docker:
+	docker build --platform="linux/amd64" -t go-ebanx .
+	docker tag go-ebanx:latest 954461865512.dkr.ecr.us-east-2.amazonaws.com/go-ebanx:latest
+	docker push 954461865512.dkr.ecr.us-east-2.amazonaws.com/go-ebanx:latest
 
 ci: prebuild build

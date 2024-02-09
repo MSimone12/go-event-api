@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/json"
+	"fmt"
 	"go-event-api/src/domain/entity"
 	"go-event-api/src/domain/usecase"
 	"net/http"
@@ -11,6 +12,7 @@ import (
 func HandleEvent(w http.ResponseWriter, r *http.Request) {
 	var event entity.Event
 	json.NewDecoder(r.Body).Decode(&event)
+	fmt.Println(event)
 	switch event.Type {
 	case "deposit":
 		deposit(w, event)

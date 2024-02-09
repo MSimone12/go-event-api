@@ -71,9 +71,13 @@ func Transfer(origin, destination, amount uint) (entity.Transfer, error) {
 	}
 	db := db.Connect()
 
-	orgn, dest := model.Account{}, model.Account{}
+	orgn, dest := model.Account{
+		ID: origin,
+	}, model.Account{
+		ID: destination,
+	}
 
-	originRes := db.Find(&orgn, origin)
+	originRes := db.Find(&orgn)
 	if errors.Is(originRes.Error, gorm.ErrRecordNotFound) {
 		return entity.Transfer{}, fmt.Errorf("Origin account not found")
 	}
@@ -81,7 +85,7 @@ func Transfer(origin, destination, amount uint) (entity.Transfer, error) {
 		return entity.Transfer{}, fmt.Errorf("Not enough balance in origin account")
 	}
 
-	destRes := db.Find(&dest, destination)
+	destRes := db.Find(&dest)
 	if errors.Is(destRes.Error, gorm.ErrRecordNotFound) {
 		return entity.Transfer{}, fmt.Errorf("Destination account not found")
 	}
