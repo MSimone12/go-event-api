@@ -3,7 +3,7 @@ runtime: go1
 build:
   commands:
     build:
-      - make ci
+      - make ci 2>&1
   env:
     - name: PORT
       value: "8080"
