@@ -1,5 +1,5 @@
 run:
-	go run ./src/main.go
+	NGROK_AUTHTOKEN=2c826go2wz0f5TsgsmqJFyDQHZf_34EGLBswNxA6C5dHjC7Fq go run ./src/main.go
 
 docker:
 	docker build --platform="linux/amd64" -t go-ebanx .
