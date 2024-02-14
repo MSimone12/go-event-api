@@ -4,6 +4,7 @@ go 1.21.6
 
 require (
 	github.com/gorilla/mux v1.8.1
+	golang.ngrok.com/ngrok v1.8.0
 	gorm.io/driver/sqlite v1.5.5
 	gorm.io/gorm v1.25.7
 )
@@ -20,7 +21,6 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.17 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.ngrok.com/muxado/v2 v2.0.0 // indirect
-	golang.ngrok.com/ngrok v1.8.0 // indirect
 	golang.org/x/net v0.15.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
 	golang.org/x/sys v0.12.0 // indirect
