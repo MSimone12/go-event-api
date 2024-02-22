@@ -5,6 +5,13 @@ import (
 	"go-event-api/src/domain/entity"
 )
 
-func Deposit(destination, amount uint) (entity.Deposit, error) {
-	return datasource.Deposit(destination, amount)
+func deposit(source datasource.DataSource) Deposit {
+	return func(destination, amount uint) entity.Deposit {
+		destinationAccount, _ := source.Account.GetAccountById(destination)
+		destinationAccount.Balance += int(amount)
+		source.Account.SaveAccount(destinationAccount)
+		return entity.Deposit{
+			Destination: destinationAccount.ToDestination(),
+		}
+	}
 }

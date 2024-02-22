@@ -8,10 +8,18 @@ In order to run this API, you need to have [go](https://go.dev) installed in you
 
 ## Run
 
-to run the API, all you got to do is run:
+To run the API, all you got to do is run:
 
 ```bash
 make run
 ```
 
-this will setup the server to test the API on an external endpoint, which is fixed as [https://pleasing-ample-lab.ngrok-free.app](https://pleasing-ample-lab.ngrok-free.app)
+This will setup the server to test the API on an external endpoint, which is fixed as [https://pleasing-ample-lab.ngrok-free.app](https://pleasing-ample-lab.ngrok-free.app)
+
+## Test
+
+To run the unit tests, simply run:
+
+```bash
+make run-test
+```

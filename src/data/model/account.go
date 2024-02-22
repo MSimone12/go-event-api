@@ -10,7 +10,7 @@ import (
 type Account struct {
 	gorm.Model
 	ID      uint `json:"id" gorm:"primaryKey"`
-	Balance uint `json:"balance"`
+	Balance int  `json:"balance"`
 }
 
 func (a *Account) ToOrigin() entity.Origin {

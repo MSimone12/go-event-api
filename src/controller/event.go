@@ -2,9 +2,7 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"go-event-api/src/domain/entity"
-	"go-event-api/src/domain/usecase"
 	"net/http"
 )
 
@@ -12,7 +10,6 @@ import (
 func HandleEvent(w http.ResponseWriter, r *http.Request) {
 	var event entity.Event
 	json.NewDecoder(r.Body).Decode(&event)
-	fmt.Println(event)
 	switch event.Type {
 	case "deposit":
 		deposit(w, event)
@@ -30,18 +27,13 @@ func HandleEvent(w http.ResponseWriter, r *http.Request) {
 }
 
 func deposit(w http.ResponseWriter, event entity.Event) {
-	deposit, err := usecase.Deposit(event.GetDestination(), event.Amount)
-
-	if err != nil {
-		http.Error(w, "0", 404)
-		return
-	}
+	deposit := controller.UseCase.Deposit(event.GetDestination(), event.Amount)
 	w.WriteHeader(201)
 	json.NewEncoder(w).Encode(deposit)
 }
 
 func withdraw(w http.ResponseWriter, event entity.Event) {
-	withdraw, err := usecase.Withdraw(event.GetOrigin(), event.Amount)
+	withdraw, err := controller.UseCase.Withdraw(event.GetOrigin(), event.Amount)
 
 	if err != nil {
 		http.Error(w, "0", 404)
@@ -52,7 +44,7 @@ func withdraw(w http.ResponseWriter, event entity.Event) {
 }
 
 func transfer(w http.ResponseWriter, event entity.Event) {
-	transfer, err := usecase.Transfer(event.GetOrigin(), event.GetDestination(), event.Amount)
+	transfer, err := controller.UseCase.Transfer(event.GetOrigin(), event.GetDestination(), event.Amount)
 
 	if err != nil {
 		http.Error(w, "0", 404)

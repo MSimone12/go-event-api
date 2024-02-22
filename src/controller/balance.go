@@ -2,7 +2,6 @@ package controller
 
 import (
 	"fmt"
-	"go-event-api/src/domain/usecase"
 	"net/http"
 	"strconv"
 )
@@ -13,7 +12,7 @@ func HandleBalance(w http.ResponseWriter, r *http.Request) {
 
 	accountId, _ := strconv.Atoi(id)
 
-	balance, err := usecase.GetBalance(uint(accountId))
+	balance, err := controller.UseCase.GetBalance(uint(accountId))
 	if err != nil {
 		http.Error(w, "0", 404)
 		return
