@@ -6,7 +6,8 @@ import (
 	"strconv"
 )
 
-// HandleBalance handles the request for GET /balance
+// HandleBalance handles the request for GET /balance,
+// returning the balance for the specified account
 func HandleBalance(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("account_id")
 

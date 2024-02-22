@@ -7,6 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// JsonMiddleware to set the properly headers automatically
 func JsonMiddleware() mux.MiddlewareFunc {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
@@ -16,6 +17,7 @@ func JsonMiddleware() mux.MiddlewareFunc {
 	}
 }
 
+// GetRouter will redirect each endpoint to its handler
 func GetRouter() *mux.Router {
 	router := mux.NewRouter()
 	router.Use(JsonMiddleware())

@@ -6,6 +6,8 @@ import (
 	"go-event-api/src/domain/entity"
 )
 
+// withdraw is the function responsible for removing balance from the account
+// receives the datasource.DataSource object from the dependency injection
 func withdraw(source datasource.DataSource) Withdraw {
 	return func(origin, amount uint) (entity.Withdraw, error) {
 		originAccount, errorOrigin := source.Account.GetAccountById(origin)

@@ -6,6 +6,8 @@ import (
 	"go-event-api/src/domain/entity"
 )
 
+// transfer is the function responsible for taking balance from the origin and putting into the destination
+// receives the datasource.DataSource object from the dependency injection
 func transfer(source datasource.DataSource) Transfer {
 	return func(origin, destination, amount uint) (entity.Transfer, error) {
 		if origin == destination {

@@ -11,12 +11,14 @@ import (
 	"golang.ngrok.com/ngrok/config"
 )
 
+// This is the entrypoint
 func main() {
 	if err := run(context.Background()); err != nil {
 		log.Fatal(err)
 	}
 }
 
+// run will run ngrok proxy serving with router
 func run(ctx context.Context) error {
 	listener, err := ngrok.Listen(
 		ctx,
@@ -27,6 +29,8 @@ func run(ctx context.Context) error {
 		return err
 	}
 	fmt.Println("App URL", listener.URL())
+	// router contains the all the route logic,
+	// which will redirect to the right handlers
 	router := router.GetRouter()
 	return http.Serve(listener, router)
 }
